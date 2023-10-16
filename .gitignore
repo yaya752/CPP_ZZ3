@@ -1,0 +1,44 @@
+# Fichiers générés par CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CMakeScripts/
+Makefile
+CMakeDoxyfile.in
+
+# Dossiers de build (générés par CMake)
+bin/
+build/
+lib/
+out/
+
+# Exécutables et fichiers temporaires
+*.exe
+*.out
+*.app
+*.so
+*.dll
+*.dylib
+*.o
+*.a
+*.out.dSYM/
+
+# Fichiers de configuration utilisateur spécifiques à CMake
+CMakeUserPresets.json
+CMakeUserPresets.json.lock
+
+# Fichiers générés par l'outil de documentation Doxygen
+doc/html/
+doc/latex/
+doc/xml/
+
+# Fichiers de sauvegarde automatique et fichiers .swp de Vim
+*~
+*.swp
+
+# Fichiers de cache et de sauvegarde
+*.log
+*.vscode/
+*.DS_Store
+Thumbs.db
+desktop.ini
