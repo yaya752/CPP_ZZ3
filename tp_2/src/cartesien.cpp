@@ -45,3 +45,4 @@ void Cartesien::convertir(Cartesien& c ) const
     c.setY(Y);  
 }
 Cartesien::Cartesien(const Polaire& p):X(p.getDistance() * std::cos(p.getAngle() * M_PI / 180)),Y(p.getDistance() * std::sin(p.getAngle() * M_PI / 180)){}
+Cartesien::Cartesien(const Cartesien& c):X(c.getX()),Y(c.getY()){}

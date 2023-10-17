@@ -12,6 +12,7 @@ public:
     Cartesien();
     Cartesien(double, double);
     Cartesien(const Polaire&);
+    Cartesien(const Cartesien&);
     ~Cartesien();
     double getX() const;
     double getY() const;

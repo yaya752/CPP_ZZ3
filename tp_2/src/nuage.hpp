@@ -5,14 +5,13 @@
 
 class Cartesien;
 template <typename Point_Generique>
-class Nuage
-{
+class Nuage{
 public:
     std::vector<Point_Generique> liste;
 
 public:
     using const_iterator = typename std::vector<Point_Generique>::const_iterator;
-
+    using value_type = Point_Generique;
 public:
     Nuage();
     ~Nuage();
@@ -65,14 +64,15 @@ Cartesien barycentre_v1(Nuage<Point_Generique> &n)
         axe_x += c.getX();
         axe_y += c.getY();
     }
-        
+
    return Cartesien(axe_x / n.size(), axe_y / n.size());
 
 }*/
 template <typename Point_Generique>
 Polaire barycentre_v1(Nuage<Point_Generique> &n)
 {
-    if (n.size() == 0){
+    if (int(n.size()) == 0)
+    {
         return Polaire();
     }
     double angle = 0;
@@ -81,30 +81,35 @@ Polaire barycentre_v1(Nuage<Point_Generique> &n)
     for (const Point_Generique &p : n)
     {
         Polaire c{p};
-        angle+= c.getAngle();
+        angle += c.getAngle();
         distance += c.getDistance();
     }
-        
-   return Polaire(angle / n.size(), distance / n.size());
 
+    return Polaire(angle / n.size(), distance / n.size());
 }
-template <typename Point_Generique>
-Cartesien barycentre_v2(Nuage<Point_Generique> &n)
+template <typename Conteneur>
+typename Conteneur::value_type barycentre_v2(const Conteneur & conteneur)
 {
-    if (n.size() == 0){
-        return Cartesien();
+
+    if (conteneur.size()== 0)
+    {
+ 
+        return typename Conteneur::value_type(Cartesien());
     }
     double axe_x = 0;
     double axe_y = 0;
-    for (const Point_Generique &p : n)
+    for (const typename Conteneur::value_type &p : conteneur)
     {
-        Cartesien c{p};
+
+        const Cartesien c{p};
+
+
         axe_x += c.getX();
         axe_y += c.getY();
     }
-        
-   return Cartesien(axe_x / n.size(), axe_y / n.size());
 
+
+    return typename Conteneur::value_type(Cartesien(axe_x / conteneur.size(), axe_y / conteneur.size()));
 }
 /*
  class BarycentreCartesien
