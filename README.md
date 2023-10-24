@@ -69,3 +69,37 @@ Pour cela, la classe Nuage propose une interface similaire aux conteneurs STL, �
 méthodes begin() et end(), ainsi qu'un type interne iterator. Proposer une fonction barycentre_v2()
 qui puisse fonctionner indifféremment sur les principaux conteneurs STL et la classe Nuage.
 ## Tp_3
+### Exercice 1 - Exceptions 
+##### Test 1
+1.  [x]  Ecrire la fonction générique chaine<T>(x) qui devrait retourner une chaîne de caractères
+représentant l'objet x de type T passé comme argument.
+Cette première version générique lève systématiquement une exception du type
+ExceptionChaine (à créer) pour indiquer que la conversion n'est pas possible. Cette classe
+d'exceptions devra hériter de std::exception et redéfinir la méthode what. Vous verrez dans les
+tests unitaires le format attendu pour le retour de what : un message suivi du type de la valeur
+qui n'a pas pu être convertie. Test 1
+##### Test 2
+2.  [x] Fournir des surcharges de la fonction chaine pour les types string, int et double. Pour les deux
+derniers, utiliser un objet stringstream pour effectuer la conversion. En revanche, aucune
+surcharge ne devra être fournie pour long. Test 2
+### Exercice 2 – Variadic templatex
+##### Test 3
+3. [x] Ecrire une surchage de la fonction chaine sous la forme d'un template avec un nombre variable
+de paramètres (cf. variadic template). Cette fonction doit convertir chaque argument en chaîne
+de caractères et les concaténer en les séparant par un espace. 
+##### Test 4-5
+4. [x] A partir de cette explication, écrire une surcharge de la fonction chaine pour les tuples, afin
+d'appeler la version variadic de la fonction chaine avec comme arguments les éléments du tuple.
+Tests 4-5
+##### Test 6
+5. [x] Supposons maintenant que l'un des éléments d'un tuple soit lui même un tuple, cf. Test 6.
+***Il vous faut donc bien veiller à
+déclarer les prototypes en amont des définitions des surcharges de la fonction chaine.***
+##### A Faire
+6. [x] Question subsidiaire : La chaîne produite avec des tuples imbriqués produit à certains moments
+des espaces multiples (plusieurs caractères espaces à la suite), liés à la fonction chaine variadic
+où un espace est en trop (soit en début, soit en fin, suivant votre implémentation). Proposer une
+version qui, au lieu de prendre en paramètre seulement un pack de types, prend d'abord un type,
+puis un pack de types. De cette manière, vous pourrez écrire la concaténation de tous les
+éléments sans l'espace superflu.
+
