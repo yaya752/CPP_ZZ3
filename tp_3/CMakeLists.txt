@@ -41,8 +41,8 @@ set ( ZZ3_HEADERS
       #src/cosinus.hpp
       src/demangle.hpp
       src/exception.hpp
-      #src/exponentielle.hpp
-      #src/factorielle.hpp
+      src/exponentielle.hpp
+      src/factorielle.hpp
       #src/puissance.hpp
     )
 
