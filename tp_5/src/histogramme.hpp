@@ -5,6 +5,7 @@
 #include "classe.hpp"
 #include "echantillon.hpp"
 #include "valeur.hpp"
+#include <map>
 template <class Comparator = std::less<Classe>>
 class Histogramme
 {
@@ -13,7 +14,7 @@ private:
     double _borne_inf = 0;
     double _borne_sup = 0;
     unsigned int _quantity = 0u;
-    std::vector<Valeur> _valeurs;
+    std::multimap<Classe,Valeur> _valeurs;
 
 public:
     Histogramme(double a, double b, unsigned int c) : _borne_inf(a), _borne_sup(b), _quantity(c)
@@ -33,16 +34,7 @@ public:
     {
         for (const Valeur &val : e.getEch())
         {
-            const auto it = std::find_if(_classes.begin(), _classes.end(), [val](const Classe &c)
-                                         { return (c.getBorneInf() <= val.getNombre() && c.getBorneSup() > val.getNombre()); });
-            if (it != _classes.end())
-            {
-                Classe c = *it;
-                _classes.erase(it);
-                c.ajouter();
-                _classes.insert(c);
-                _valeurs.push_back(Valeur(val));
-            }
+            ajouter(val.getNombre());
         }
     }
     void ajouter(const double &val)
@@ -55,7 +47,7 @@ public:
             _classes.erase(it);
             c.ajouter();
             _classes.insert(c);
-            _valeurs.push_back(Valeur(val));
+            _valeurs.insert(std::make_pair(c,val));
         }
     }
     double getBorneInf() const
@@ -71,7 +63,7 @@ public:
     {
         return _quantity;
     }
-    std::vector<Valeur> getValeurs()const 
+    std::multimap<Classe,Valeur> getValeurs()const 
     {
         return _valeurs;
     }
