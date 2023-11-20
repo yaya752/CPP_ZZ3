@@ -379,7 +379,7 @@ TEST_CASE ( "TP5_Valeurs::Association" ) {
 }
 
 //----------------------------------------------------------------------------------------------- 23
-/*TEST_CASE ( "TP5_Valeurs::Intervalle" ) {
+TEST_CASE ( "TP5_Valeurs::Intervalle" ) {
  using histo_t = Histogramme<>;
 
  double v[] = { 7.0, 9.0, 8.0, 5.0, 10.0, 14.0, 13.0, 6.0, 5.5, 13.5 };
@@ -404,8 +404,7 @@ TEST_CASE ( "TP5_Valeurs::Association" ) {
   unsigned j = 0;
 
   while (interval.first != interval.second) {
-   REQUIRE ( (interval.first)->second.getNote() == Approx(notes[i][j]) );
-
+   REQUIRE ( (interval.first)->second.getNote() == Approx(notes[i][j]));
    ++(interval.first);
    ++j;
   }
@@ -414,6 +413,6 @@ TEST_CASE ( "TP5_Valeurs::Association" ) {
 
   ++i;
  }
-}*/
+}
 
 // Fin //-------------------------------------------------------------------------------------------

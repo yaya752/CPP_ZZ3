@@ -67,7 +67,11 @@ public:
     {
         return _valeurs;
     }
-
+    std::pair<std::multimap<Classe,Valeur>::const_iterator,std::multimap<Classe,Valeur>::const_iterator> getValeurs(const Classe& c)const 
+    {
+        auto it =_valeurs.equal_range(c);
+        return  it;
+    }
     /*template <class Comparator2>
     Histogramme(const Histogramme<Comparator2> &h2) : 
         _classes({h2.getClasses().begin(), h2.getClasses().end()}),
@@ -83,6 +87,7 @@ public:
     {
         std::copy(h2.getClasses().begin(), h2.getClasses().end(),std::inserter(_classes,_classes.end()));
     }
+
 
 };
 
