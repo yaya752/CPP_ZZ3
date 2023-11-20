@@ -1,7 +1,7 @@
 # Project #-----------------------------------------------------------------------------------------
 cmake_minimum_required ( VERSION 3.18 )
 
-project ( tp4 CXX )
+project ( tp5 CXX )
 
 # C++ Standard #------------------------------------------------------------------------------------
 set ( CXX_STANDARD_REQUIRED ON )
@@ -14,21 +14,15 @@ endif ()
 
 # Sources #-----------------------------------------------------------------------------------------
 set ( PROJECT_HEADERS
-      src/carte.hpp
-      src/complexe.hpp
-      src/consommateur.hpp
-      src/mouchard.hpp
-      src/paquet.hpp
-      src/ressource.hpp
-      src/usine.hpp
-      src/vecteur.hpp
+      src/exemple.hpp
+      src/classe.hpp
+      #src/comparateur.hpp
+      src/echantillon.hpp
+      src/histogramme.hpp
+      src/valeur.hpp
     )
 
 set ( PROJECT_SOURCES
-      #src/carte.cpp
-      #src/paquet.cpp
-      #src/ressource.cpp
-      #src/usine.cpp
     )
 
 set ( TEST_HEADERS
@@ -58,13 +52,9 @@ target_sources ( test
                )
 
 # Executables #-------------------------------------------------------------------------------------
-add_executable ( ${CMAKE_PROJECT_NAME}_mouchard test/test_mouchard.cpp )
+add_executable ( ${CMAKE_PROJECT_NAME}_histo src/main_histo.cpp )
 
-target_link_libraries ( ${CMAKE_PROJECT_NAME}_mouchard PRIVATE common )
-
-add_executable ( ${CMAKE_PROJECT_NAME}_vecteur test/test_vecteur.cpp )
-
-target_link_libraries ( ${CMAKE_PROJECT_NAME}_vecteur PRIVATE common )
+target_link_libraries ( ${CMAKE_PROJECT_NAME}_histo PRIVATE common )
 
 add_executable ( ${CMAKE_PROJECT_NAME}_test test/${CMAKE_PROJECT_NAME}_test.cpp )
 

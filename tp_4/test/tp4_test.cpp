@@ -3,12 +3,12 @@
 
 #include <sstream>
 #include <type_traits>
-
+#include <iostream>
 #include <carte.hpp>
 #include <usine.hpp>
-//#include <paquet.hpp>
-//#include <ressource.hpp>
-//#include <consommateur.hpp>
+#include <paquet.hpp>
+#include <ressource.hpp>
+#include <consommateur.hpp>
 
 // Tests //-----------------------------------------------------------------------------------------
 
@@ -33,7 +33,7 @@ TEST_CASE ( "TP4_Carte::Usine52" ) {
 }
 
 //------------------------------------------------------------------------------------------------ 2
-/*TEST_CASE ( "TP4_Carte::CarteInterface" ) {
+TEST_CASE ( "TP4_Carte::CarteInterface" ) {
  // Contructeur de copie existe ?
  REQUIRE ( std::is_copy_constructible<Carte>::value == false );
 
@@ -42,19 +42,19 @@ TEST_CASE ( "TP4_Carte::Usine52" ) {
 
  // Constructeur ad hoc existe ?
  REQUIRE ( has_public_constructor<Carte>::value == false );
-}*/
+}
 
 //------------------------------------------------------------------------------------------------ 3
-/*TEST_CASE ( "TP4_Carte::UsineInterface" ) {
+TEST_CASE ( "TP4_Carte::UsineInterface" ) {
  // Contructeur de copie existe ?
  REQUIRE ( std::is_copy_constructible<UsineCarte>::value == false );
 
  // Operateur d'affectation par copie existe ?
  REQUIRE ( std::is_copy_assignable<UsineCarte>::value == false );
-}*/
+}
 
 //------------------------------------------------------------------------------------------------ 4
-/*TEST_CASE ( "TP4_Carte::UsineN" ) {
+TEST_CASE ( "TP4_Carte::UsineN" ) {
  const unsigned n = 32;
 
  UsineCarte usine(n);
@@ -66,10 +66,10 @@ TEST_CASE ( "TP4_Carte::Usine52" ) {
  }
 
  REQUIRE ( usine.getCarte() == nullptr );
-}*/
+}
 
 //------------------------------------------------------------------------------------------------ 5
-/*TEST_CASE ( "TP4_Carte::PaquetRemplir" ) {
+TEST_CASE ( "TP4_Carte::PaquetRemplir" ) {
  const unsigned n = 27;
 
  paquet_t paquet;
@@ -80,10 +80,10 @@ TEST_CASE ( "TP4_Carte::Usine52" ) {
  for (unsigned i = 0; i<n; ++i) {
   REQUIRE ( paquet[i]->getValeur() == i );
  }
-}*/
+}
 
 //------------------------------------------------------------------------------------------------ 6
-/*TEST_CASE ( "TP4_Carte::PaquetFlux" ) {
+TEST_CASE ( "TP4_Carte::PaquetFlux" ) {
  const unsigned n = 27;
 
  paquet_t paquet;
@@ -100,10 +100,10 @@ TEST_CASE ( "TP4_Carte::Usine52" ) {
  for (unsigned i = 0; i<n; ++i) s2 << paquet[i]->getValeur() << " ";
 
  REQUIRE (s1.str() == s2.str());
-}*/
+}
 
 //------------------------------------------------------------------------------------------------ 7
-/*TEST_CASE ( "TP4_Carte::CarteDestruction" ) {
+TEST_CASE ( "TP4_Carte::CarteDestruction" ) {
  REQUIRE ( Carte::getCompteur() == 0 );
 
  {
@@ -124,10 +124,10 @@ TEST_CASE ( "TP4_Carte::Usine52" ) {
  }
 
  REQUIRE ( Carte::getCompteur() == 0 );
-}*/
+}
 
 //------------------------------------------------------------------------------------------------ 8
-/*TEST_CASE ( "TP4_Conso::Ressource" ) {
+TEST_CASE ( "TP4_Conso::Ressource" ) {
  Ressource r(17);
 
  REQUIRE ( r.getStock() == 17 );
@@ -135,10 +135,10 @@ TEST_CASE ( "TP4_Carte::Usine52" ) {
  r.consommer(6);
 
  REQUIRE ( r.getStock() == 11 );
-}*/
+}
 
 //------------------------------------------------------------------------------------------------ 9
-/*TEST_CASE ( "TP4_Conso::Consommateur" ) {
+TEST_CASE ( "TP4_Conso::Consommateur" ) {
  // std::shared_ptr<Ressource> r(new Ressource(17));
  auto r = std::make_shared<Ressource>(17);
  Consommateur c(3,r);
@@ -148,10 +148,10 @@ TEST_CASE ( "TP4_Carte::Usine52" ) {
  c.puiser();
 
  REQUIRE ( r->getStock() == 14 );
-}*/
+}
 
 //----------------------------------------------------------------------------------------------- 10
-/*TEST_CASE ( "TP4_Conso::RessoureEpuisee" ) {
+TEST_CASE ( "TP4_Conso::RessoureEpuisee" ) {
  // std::shared_ptr<Ressource> r(new Ressource(5));
  auto r = std::make_shared<Ressource>(5);
  Consommateur c(3,r);
@@ -168,10 +168,10 @@ TEST_CASE ( "TP4_Carte::Usine52" ) {
 
  REQUIRE ( r->getStock() == 0 );
  REQUIRE ( r.use_count() == 1 );
-}*/
+}
 
 //----------------------------------------------------------------------------------------------- 11
-/*TEST_CASE ( "TP4_Conso::SurveillanceRessources" ) {
+TEST_CASE ( "TP4_Conso::SurveillanceRessources" ) {
  // std::shared_ptr<Ressource> r1(new Ressource(14));
  // std::shared_ptr<Ressource> r2(new Ressource(7));
  // std::shared_ptr<Ressource> r3(new Ressource(13));
@@ -229,6 +229,6 @@ TEST_CASE ( "TP4_Carte::Usine52" ) {
  for (unsigned i = 0; i<4; ++i) {
   REQUIRE ( ressources[i].use_count() == 0 );
  }
-}*/
+}
 
 // Fin //-------------------------------------------------------------------------------------------
