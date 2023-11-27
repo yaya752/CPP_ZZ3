@@ -6,6 +6,9 @@
 #include "echantillon.hpp"
 #include "classe.hpp"
 #include <histogramme.hpp>
+#include <ostream>
+#include <sstream>
+#include <cstring>  
 //#include <comparateur.hpp>
 
 //using Histo = Histogramme; // A utiliser pour les tests 12-13
@@ -373,7 +376,7 @@ TEST_CASE ( "TP5_Valeurs::Association" ) {
  for (const std::pair<const Classe,Valeur> & p : h.getValeurs()) {
   REQUIRE ( p.first.getBorneInf() == Approx(bornesInf[i]) );
   REQUIRE ( p.first.getBorneSup() == Approx(bornesSup[i]) );
-  REQUIRE ( p.second.getNote() == Approx(notes[i]) );
+  REQUIRE ( p.second.getNote() == Approx(notes[i]));
   ++i;
  }
 }
@@ -415,4 +418,28 @@ TEST_CASE ( "TP5_Valeurs::Intervalle" ) {
  }
 }
 
+
+
+//----------------------------------------------------------------------------------------------- 23
+TEST_CASE ( "TP5_Valeurs::display" ) {
+  using histo2_t = Histogramme<ComparateurQuantite<Classe>>;
+  using histo1_t = Histogramme<>;
+  double v[] = { 3.03162, 10.6985, 1.09399 ,10.748, 13.6283, 10.281, 6.56962, 2.34028, 6.70708,
+18.267, 10.2371, 5.42167, 6.14, 5.29529, 19.6752, 5.72411, 8.03705, 7.5594, 17.4811, 15.6231};
+
+ Echantillon e;
+ for (unsigned i = 0; i<10; ++i) e.ajouter(v[i]);
+
+  histo1_t h{0,20,20};
+  histo2_t h1{0,20,20};
+  std::stringstream ss;
+  std::stringstream ss1;
+  h.ajouter(e);
+  h1.ajouter(e);
+  h1 << ss1;
+  h << ss;
+  std::cout << ss.str() <<std::endl;
+  std::cout << ss1.str() <<std::endl;
+  REQUIRE(1==1);
+}
 // Fin //-------------------------------------------------------------------------------------------

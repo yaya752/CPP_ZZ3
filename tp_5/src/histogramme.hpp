@@ -87,7 +87,25 @@ public:
     {
         std::copy(h2.getClasses().begin(), h2.getClasses().end(),std::inserter(_classes,_classes.end()));
     }
-
+    std::ostream& operator<<(std::ostream& os){
+        for (const Classe &c : _classes)
+        {
+            if (c.getQuantite() !=0){
+            os << "["<<c.getBorneInf()<<","<< c.getBorneSup()<<"] = "<<c.getQuantite() << " :";
+            auto interval = getValeurs(c);
+            
+            while (interval.first != interval.second) {
+                
+                    os <<"("<<(interval.first)->second.getEtudiant()<<"; "<<(interval.first)->second.getNote()<<") ";
+                    ++(interval.first);
+                
+            }
+            os << std::endl;
+            
+            }
+        }
+        return os;
+    }
 
 };
 
