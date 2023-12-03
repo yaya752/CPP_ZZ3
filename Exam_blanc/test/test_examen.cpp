@@ -124,13 +124,13 @@ TEST_CASE ( "Arme:Constructeur déplacement" ) {
  // Autre manière de vérifier la présence du constructeur, mais pas de vérifier son bon fonctionnement.
  REQUIRE (std::is_move_constructible<Arme>::value);
 }
-/*
+
 TEST_CASE ( "Arme:Affectation par déplacement" ) {
  // J'ai pas trouver mieux, essayer de la faire bien cette redéfinition d'opérateur.
  REQUIRE (std::is_move_assignable<Arme>::value);
 }
 
-
+/*
 * Test 10 : Un container
 
 TEST_CASE ( "Inventaire:Stokage" ) {
